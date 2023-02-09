@@ -47,7 +47,6 @@ body {
     display: flex;
     justify-content: space-between;
     margin: 0 40px;
-    margin-bottom: 10px;
 }
 
 .item__name {
@@ -73,9 +72,9 @@ body {
 
 .footer__input {
     width: 100%;
-    font-size: 24px;
-    font-weight: 500;
-    padding: 3px 40px;
+    font-size: 20px;
+    font-weight: 530;
+    padding: 6px 40px;
 }
 
 .footer__button {
