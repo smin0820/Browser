@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            height: 250px;
+            width: 250px;
+            margin-bottom: 10px;
+            background-color: brown;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="checkbox">
+    </div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        document.addEventListener('wheel', event => {
+            console.log('scrolling');
+        })
+        const checkbox = document.querySelector('input');
+        checkbox.addEventListener('click', event => {
+            console.log('checked');
+            // 브라우저상에서는 체크 마크가 생기진 않지만, checked는 출력됨
+            event.preventDefault();
+        })
+    </script>
+</body>
+</html>
