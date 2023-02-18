@@ -3,6 +3,7 @@
 const CARROT_SIZE = 80;
 const CARROT_COUNT = 5;
 const BUG_COUNT = 5;
+const GAEM_DURATION_SEC = 10;
 
 const field = document.querySelector('.game__field');
 // 요소의 크기 및 위치 정보를 가져오는 메서드
@@ -10,6 +11,11 @@ const fieldRect = field.getBoundingClientRect();
 const gameBtn = document.querySelector('.game__button');
 const gameTimer = document.querySelector('.game__timer');
 const gameScore = document.querySelector('.game__score');
+
+const popUp = document.querySelector('.pop-up');
+const popRefresh = document.querySelector('.pop-up__refresh');
+const popMessage = document.querySelector('.pop-up__message');
+
 
 let started = false;
 let score = 0;
@@ -28,11 +34,11 @@ function startGame() {
     initGame();
     showStopBtn();
     showTimerAndScore();
-    // startGameTimer();
+    startGameTimer();
 }
 
 function stopGame() {
-
+    stopGameTimer();
 }
 
 function showStopBtn() {
@@ -44,6 +50,39 @@ function showStopBtn() {
 function showTimerAndScore() {
     gameTimer.style.visibility = 'visible';
     gameScore.style.visibility = 'visible';
+}
+
+function startGameTimer() {
+    let remainingTimeSec = GAEM_DURATION_SEC;
+    upDateTimeText(remainingTimeSec);
+    timer = setInterval(() => {
+        if (remainingTimeSec <= 0) {
+            clearInterval(timer);
+            return;
+        }
+        upDateTimeText(--remainingTimeSec);
+    }, 1000)
+}
+
+function stopGameTimer() {
+    clearInterval(timer);
+    hideGameButton();
+    showPopUpwithText('REPLAY?❓');
+}
+
+function upDateTimeText(time) {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    gameTimer.innerHTML = `${minutes} : ${seconds}`;
+}
+
+function hideGameButton() {
+    gameBtn.style.visibility = 'hidden';
+}
+
+function showPopUpwithText(text) {
+    popMessage.innerHTML = text;
+    popUp.classList.remove('pop-up--hide');
 }
 
 function initGame() {
