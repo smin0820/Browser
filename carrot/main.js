@@ -78,6 +78,12 @@ function showStopBtn() {
     const icon = gameBtn.querySelector('.fa-solid');
     icon.classList.add('fa-stop');
     icon.classList.remove('fa-play');
+    gameBtn.style.visibility = 'visible';
+
+}
+
+function hideGameButton() {
+    gameBtn.style.visibility = 'hidden';
 }
 
 function showTimerAndScore() {
@@ -106,10 +112,6 @@ function upDateTimeText(time) {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
     gameTimer.innerHTML = `${minutes} : ${seconds}`;
-}
-
-function hideGameButton() {
-    gameBtn.style.visibility = 'hidden';
 }
 
 function showPopUpwithText(text) {
